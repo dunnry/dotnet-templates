@@ -1,8 +1,8 @@
 ﻿[<AutoOpen>]
 module private ConsumerTemplate.Infrastructure
 
+open Serilog
 open System
-open System.Runtime.CompilerServices
 open System.Threading
 open System.Threading.Tasks
 
@@ -33,8 +33,6 @@ type System.Threading.SemaphoreSlim with
         try return! workflow
         finally semaphore.Release() |> ignore
     }
-
-open Serilog
 
 // Application logic assumes the global `Serilog.Log` is initialized _immediately_ after a successful ArgumentParser.ParseCommandline
 type Logging() =
