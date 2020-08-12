@@ -9,6 +9,8 @@ type Stats(log, statsInterval, stateInterval) =
 let transformOrFilter (changeFeedDocument: Microsoft.Azure.Documents.Document) : Propulsion.Streams.StreamEvent<_> seq = seq {
     for batch in Propulsion.Cosmos.EquinoxCosmosParser.enumStreamEvents changeFeedDocument do
         match batch.stream with
-        // TODO whitelist/blacklist to ensure only relevant streams get archived
-        | FsCodec.StreamName.CategoryAndId (_, _) -> yield batch
+        | FsCodec.StreamName.CategoryAndId ("LokiPickTicketReservations", _) -> yield batch
+        | FsCodec.StreamName.CategoryAndId ("LokiDcBatch", _) -> yield batch
+        | FsCodec.StreamName.CategoryAndId ("LokiDcTransmissions", _) -> yield batch
+        | FsCodec.StreamName.CategoryAndId (_, _) -> ()
 }
