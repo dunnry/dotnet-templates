@@ -9,6 +9,9 @@ The `Unreleased` section name is replaced by the expected version of next releas
 ## [Unreleased]
 
 ### Added
+
+- Added `es` checkpoint storage mode [#80](https://github.com/jet/dotnet-templates/pull/80) 
+
 ### Changed
 
 - Polished `SemaphoreSlim` extensions [#79](https://github.com/jet/dotnet-templates/pull/79) 
