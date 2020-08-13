@@ -10,7 +10,7 @@ The `Unreleased` section name is replaced by the expected version of next releas
 
 ### Added
 
-- Added `es` checkpoint storage mode [#80](https://github.com/jet/dotnet-templates/pull/80) 
+- `proProjector`: Added `es` checkpoint storage mode [#81](https://github.com/jet/dotnet-templates/pull/81) 
 
 ### Changed
 
