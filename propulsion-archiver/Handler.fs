@@ -7,8 +7,12 @@ type Stats(log, statsInterval, stateInterval) =
     override __.HandleExn exn = log.Information(exn, "Unhandled")
 
 let (|Archivable|NotArchivable|) = function
-    | "LokiPickTicketReservations" | "LokiDcBatch" | "LokiDcTransmissions" -> Archivable
-    | _ -> NotArchivable
+    | "LokiPickTicketReservations"
+    | "LokiDcBatch"
+    | "LokiDcTransmissions" ->
+        Archivable
+    | _ ->
+        NotArchivable
 
 let transformOrFilter (changeFeedDocument: Microsoft.Azure.Documents.Document) : Propulsion.Streams.StreamEvent<_> seq = seq {
     for batch in Propulsion.Cosmos.EquinoxCosmosParser.enumStreamEvents changeFeedDocument do
